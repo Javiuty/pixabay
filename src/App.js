@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Formulario from "./Components/Formulario";
 
-function App() {
+const App = () => {
+  const [busqueda, guardarBusqueda] = useState("");
+
+  useEffect(() => {
+    if (busqueda === "") return;
+
+    const imagenesPorPagina = 30;
+    const key = process.env.API_KEY;
+
+    console.log(key);
+  }, [busqueda]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="jumbotron">
+        <p className="lead text-center">Buscador de Imágenes</p>
+        <Formulario guardarBusqueda={guardarBusqueda} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
